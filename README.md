@@ -4,6 +4,10 @@
 
 A BUS201 prototype for on-demand garment care at the customer's home, hotel or office. Built with React 19, Vite, CSS, Tailwind and Lucide icons.
 
+## Project status
+
+Read [the current handoff and project status](docs/project-status.md) before continuing development. It records the implementation, deployment evidence, tests and remaining work, including when the original Windows folder is unavailable.
+
 ## Start
 
 ```sh
