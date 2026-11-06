@@ -1,360 +1,547 @@
 # PRESSLY — Website design specification
 
-This specification documents the implemented BUS201 classroom prototype: five route-selected screens in a React single-page application. Prices are AED; service, payment and contact outcomes are simulated.
+Ten customer/operational routes and a separate assessment route in one React application. All services and payment outcomes are demonstrations. No original BUS201 brief was available: confirm the final rubric and word-limit interpretation.
 
-## 1. Sitemap
+## Sitemap
 
 ```mermaid
 flowchart TD
-  Site[PRESSLY website] --> Home[Home / #home]
-  Site --> Services[Services / #services]
-  Site --> Booking[Booking / #booking]
-  Site --> Project[The project / #about]
-  Site --> Contact[Contact / #contact]
-  Home -->|Service action| Booking
-  Services -->|Selected service or assessment| Booking
+  Site[PRESSLY]
+  Site --> home[Home]
+  Site --> services[Services]
+  Site --> booking[Book Express Care]
+  Site --> tracking[Tracking]
+  Site --> dashboard[My account]
+  Site --> technician[Technician demo]
+  Site --> about[About us]
+  Site --> contact[Contact & support]
+  Site --> how_it_works[How it works]
+  Site --> policies[Policies]
+  Site --> assessment[Assessment]
+  services --> booking
+  booking --> tracking
+  technician --> tracking
+  dashboard --> booking
 ```
 
-The shared header links Home, Services, The project and Contact; its primary action opens Booking. Footer links expose all five routes. Browser back/forward follows hash changes.
+Shared header, all-pages menu and footer expose the routes. Service actions preselect care; browser back/forward follows hash navigation.
 
-## 2. Screen layouts, block compositing and content analysis
+## Home
 
-### Home (home)
+Purpose: Introduce on-site garment care and convert an urgent need into a demonstration booking.
 
-**Purpose:** Introduce the garment-care service and give visitors a direct route to booking.
+Content: Hero, services, workflow, use cases, qualified sustainability, fee-waiver policy, illustrative testimonials and FAQs.
 
-**Content analysis:** Service proposition, editorial garment image, starting price in AED, three service choices, three-step process and arrival-target explanation.
+Operations: Book express care or open the full how-it-works process.
 
-**Functions and operations:** Book a service opens the booking page with Express Refresh selected. Each service card opens booking with its own service selected.
-
-**Desktop block composition:**
+Desktop block composition:
 
 ```text
-[ Shared logo / navigation / booking action ]
-[ Service headline + booking action ] [ Wardrobe editorial image ]
-[ Express Refresh ] [ Stain Rescue ] [ Rapid Wash ]
-[ Three-step service process ] [ Steam-care editorial image ]
-[ Arrival target + booking demo link ]
-[ Shared footer / links / prototype disclosure ]
+[Shared header]
+[ Headline and booking actions ] [ Wardrobe image ]
+[ Three care cards ]
+[ Process and use cases ]
+[ Technology, guarantee and FAQ ]
+[Shared footer]
 ```
 
-**Mobile block composition:**
+Mobile block composition:
 
 ```text
-[ Logo / booking action / menu ]
-[ Service headline + booking action ]
-[ Wardrobe editorial image ]
-[ Express Refresh ]
-[ Stain Rescue ]
-[ Rapid Wash ]
-[ Three-step service process ]
-[ Steam-care editorial image ]
-[ Arrival target + booking demo link ]
-[ Footer / links ]
+[Logo / booking / menu]
+[ Headline and booking actions ]
+[ Wardrobe image ]
+[ Three care cards ]
+[ Process and use cases ]
+[ Technology, guarantee and FAQ ]
+[Footer]
 ```
 
-**Responsive layout analysis:** Headline, description and full-width booking button come first, followed by the hero image. Service cards and process blocks stack vertically.
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
 
-**Screen states and feedback:** All three services are available. Home has no payment fields or account requirement.
+States: All current services bookable; Rapid Wash is not sold.
 
-### Services (services)
+## Services
 
-**Purpose:** Explain prices, treatment limits and fabric suitability before a booking.
+Purpose: Explain suitability, editable demonstration prices and service limits before checkout.
 
-**Content analysis:** Express Refresh at AED 18 per garment, Stain Rescue at AED 24 per spot, Rapid Wash at AED 32 per bag, refresh bundle prices, fabric and stain selectors and assessment outcome.
+Content: Three available services, dynamic calculator, future Rapid Wash and fixed fabric assessment.
 
-**Functions and operations:** Book a service card, or choose a fabric and stain to see either a technician-assessment route or a specialist-care referral.
+Operations: Choose service and quantity, calculate fees or inspect a fabric and stain.
 
-**Desktop block composition:**
+Desktop block composition:
 
 ```text
-[ Shared logo / navigation / booking action ]
-[ Services heading + AED pricing introduction ]
-[ Express Refresh + price ] [ Stain Rescue + price ] [ Rapid Wash + price ]
-[ Fabric-care explanation ] [ Fabric selector + stain selector + result ]
-[ Shared footer / links / prototype disclosure ]
+[Shared header]
+[ Service heading ]
+[ Three service cards ]
+[ Calculator explanation ] [ Inputs and price ]
+[ Future washing ] [ Fabric guide ]
+[Shared footer]
 ```
 
-**Mobile block composition:**
+Mobile block composition:
 
 ```text
-[ Logo / booking action / menu ]
-[ Services heading + AED pricing introduction ]
-[ Express Refresh + price ]
-[ Stain Rescue + price ]
-[ Rapid Wash + price ]
-[ Fabric-care explanation ]
-[ Fabric selector + stain selector + result ]
-[ Footer / links ]
+[Logo / booking / menu]
+[ Service heading ]
+[ Three service cards ]
+[ Calculator explanation ]
+[ Inputs and price ]
+[ Future washing ]
+[ Fabric guide ]
+[Footer]
 ```
 
-**Responsive layout analysis:** Service cards stack in one column. Fabric-care explanation precedes the selectors, with each field on its own row.
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
 
-**Screen states and feedback:** Eight fabrics and six stains produce 48 fixed routing combinations. Specialist outcomes do not offer an on-site stain booking action. The guide is not a trained AI model.
+States: Invalid quantities show errors; specialist outcomes do not offer on-site treatment.
 
-### Booking (booking)
+## Book Express Care
 
-**Purpose:** Configure an order, confirm a location and payment preference, and demonstrate service outcomes.
+Purpose: Create a validated, uniquely identified and persistent demonstration order.
 
-**Content analysis:** Three-step progress, service selection, quantity controls, selected location, cash/card/Apple Pay choices, consent, AED total, service countdown and outcome controls.
+Content: Six steps: service, garments, customer/location, time, review, checkout.
 
-**Functions and operations:** Choose care → location and payment → confirm demo booking → simulate arrival or laundry return → approve service, or demonstrate a missed target.
+Operations: Validate inputs, review pricing and consent, save order and open tracking.
 
-**Desktop block composition:**
+Desktop block composition:
 
 ```text
-[ Shared logo / navigation / booking action ]
-[ Booking heading + simulation disclosure ]
-[ 01 Choose care → 02 Location & payment → 03 Track service ]
-[ Active booking form / countdown ] [ Service + quantity + payment + AED summary ]
-[ Shared footer / links / prototype disclosure ]
+[Shared header]
+[ Progress indicator ]
+[ Step form ] [ Live summary ]
+[ Validation and navigation ]
+[Shared footer]
 ```
 
-**Mobile block composition:**
+Mobile block composition:
 
 ```text
-[ Logo / booking action / menu ]
-[ Booking heading + simulation disclosure ]
-[ 01 Choose care → 02 Location & payment → 03 Track service ]
-[ Active booking form / countdown ]
-[ Service + quantity + payment + AED summary ]
-[ Footer / links ]
+[Logo / booking / menu]
+[ Progress indicator ]
+[ Step form ]
+[ Live summary ]
+[ Validation and navigation ]
+[Footer]
 ```
 
-**Responsive layout analysis:** Progress remains visible above the form. The form and order summary stack, primary actions become full width and fields retain readable text.
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
 
-**Screen states and feedback:** Step 1 shows services and quantities. Step 2 shows location, payment and required consent. Step 3 shows active, arrived/returned, completed or missed-target states. Cash never displays a payment hold or refund.
+States: Loading, invalid inputs, save failure and saved confirmation are explicit.
 
-### The project (about)
+## Tracking
 
-**Purpose:** Document the venture and provide the design specification needed to understand and reproduce the solution.
+Purpose: Show the actual saved order status, target times and event history.
 
-**Content analysis:** Mission and values, sitemap, five screen compositions, content analysis, layout analysis, business rules, process and data-flow diagrams, implementation boundaries, feasibility, competitive analysis and Business Model Canvas.
+Content: Order selector, booking details, six status stages and timestamped events.
 
-**Functions and operations:** Read or expand the design sections, follow sitemap links to the five pages, or download the Markdown specification.
+Operations: Switch order, cancel before en route, view technician demo and rate completion.
 
-**Desktop block composition:**
+Desktop block composition:
 
 ```text
-[ Shared logo / navigation / booking action ]
-[ Project heading + garment editorial ]
-[ Mission ] [ Vision and values ]
-[ Design specification + sitemap + screen blocks ]
-[ Rules + process diagrams + implementation documentation ]
-[ Feasibility + competitive analysis + Business Model Canvas ]
-[ Shared footer / links / prototype disclosure ]
+[Shared header]
+[ Demo notice and order selector ]
+[ Order details and price ]
+[ Status stages ]
+[ Event history and feedback ]
+[Shared footer]
 ```
 
-**Mobile block composition:**
+Mobile block composition:
 
 ```text
-[ Logo / booking action / menu ]
-[ Project heading + garment editorial ]
+[Logo / booking / menu]
+[ Demo notice and order selector ]
+[ Order details and price ]
+[ Status stages ]
+[ Event history and feedback ]
+[Footer]
+```
+
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
+
+States: No orders, active, overdue, completed, cancelled and missing assignment states.
+
+## My account
+
+Purpose: Manage the single-browser customer profile and order history.
+
+Content: Active/completed orders, rebooking, saved addresses, preferences, inquiries and privacy controls.
+
+Operations: Rebook, open tracking, save profile or explicitly delete local demo data.
+
+Desktop block composition:
+
+```text
+[Shared header]
+[ Demo account notice and totals ]
+[ Active orders ] [ History ]
+[ Profile and saved addresses ]
+[ Support inbox and clear-data action ]
+[Shared footer]
+```
+
+Mobile block composition:
+
+```text
+[Logo / booking / menu]
+[ Demo account notice and totals ]
+[ Active orders ]
+[ History ]
+[ Profile and saved addresses ]
+[ Support inbox and clear-data action ]
+[Footer]
+```
+
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
+
+States: Empty histories, save validation, confirmation and storage failures.
+
+## Technician demo
+
+Purpose: Demonstrate capability-based acceptance and service progress.
+
+Content: Role selector, capabilities, assigned jobs, available requests, completions and illustrative earnings.
+
+Operations: Accept or decline a request, advance only an assigned job and inspect tracking.
+
+Desktop block composition:
+
+```text
+[Shared header]
+[ Role and capabilities ]
+[ Assigned jobs ] [ Available requests ]
+[ Completed jobs and earnings ]
+[Shared footer]
+```
+
+Mobile block composition:
+
+```text
+[Logo / booking / menu]
+[ Role and capabilities ]
+[ Assigned jobs ]
+[ Available requests ]
+[ Completed jobs and earnings ]
+[Footer]
+```
+
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
+
+States: Busy, unsupported, declined, scheduled-not-started and no-job states.
+
+## About us
+
+Purpose: Explain the startup mission and on-site business model without technical customer clutter.
+
+Content: Mission, values, customer problem, gig model, measured sustainability and future expansion.
+
+Operations: Read the venture story or open the separate assessment page.
+
+Desktop block composition:
+
+```text
+[Shared header]
+[ Editorial garment image ]
+[ Mission ] [ Values ]
+[ Operating model and future work ]
+[Shared footer]
+```
+
+Mobile block composition:
+
+```text
+[Logo / booking / menu]
+[ Editorial garment image ]
 [ Mission ]
-[ Vision and values ]
-[ Design specification + sitemap + screen blocks ]
-[ Rules + process diagrams + implementation documentation ]
-[ Feasibility + competitive analysis + Business Model Canvas ]
-[ Footer / links ]
+[ Values ]
+[ Operating model and future work ]
+[Footer]
 ```
 
-**Responsive layout analysis:** Documentation stays in one reading column. Screen wireframes include separate desktop and mobile compositions. Wide comparison tables scroll within their own region.
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
 
-**Screen states and feedback:** Documentation uses native expandable sections. No team-member allocation or UI/UX staff-role content is displayed.
+States: Static explanation with explicit prototype limits.
 
-### Contact (contact)
+## Contact & support
 
-**Purpose:** Provide UAE phone contact and a validated feedback-form demonstration.
+Purpose: Validate and save a local support request with an honest receipt.
 
-**Content analysis:** Phone links +971 56 456 8769 and +971 58 987 6757, name, email, category, message, submission explanation and service FAQs.
+Content: User-supplied project phone contacts, request form, FAQ and policy links.
 
-**Functions and operations:** Tap a phone number to open the device dialler, or validate a demo inquiry. A valid form shows a local confirmation that no message was sent or saved.
+Operations: Save local inquiry and inspect it in My account; optionally open a phone dialler.
 
-**Desktop block composition:**
+Desktop block composition:
 
 ```text
-[ Shared logo / navigation / booking action ]
-[ Contact heading + introduction ]
-[ UAE phone numbers + contact explanation ] [ Name + email + category + message + preview action ]
-[ Frequently asked questions ]
-[ Shared footer / links / prototype disclosure ]
+[Shared header]
+[ Support and project contacts ] [ Inquiry form ]
+[ FAQ ]
+[ Policy and booking support links ]
+[Shared footer]
 ```
 
-**Mobile block composition:**
+Mobile block composition:
 
 ```text
-[ Logo / booking action / menu ]
-[ Contact heading + introduction ]
-[ UAE phone numbers + contact explanation ]
-[ Name + email + category + message + preview action ]
-[ Frequently asked questions ]
-[ Footer / links ]
+[Logo / booking / menu]
+[ Support and project contacts ]
+[ Inquiry form ]
+[ FAQ ]
+[ Policy and booking support links ]
+[Footer]
 ```
 
-**Responsive layout analysis:** Telephone links appear before the form. Name and email stack; FAQs remain keyboard-accessible disclosure rows.
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
 
-**Screen states and feedback:** Name, valid email and message are required. Name is limited to 100 characters, email to 254 and message to 3,000. Editing after a preview clears the confirmation. Phone calls are initiated by the visitor.
+States: Invalid inputs, saved local receipt and storage failure; no email delivery.
 
-## 3. Business rules
+## How it works
 
-### BR01 — Pricing and currency
+Purpose: Explain the customer-to-technician lifecycle visually.
 
-All displayed prices use AED. Refresh costs 18 per garment, stain care 24 per spot and wash 32 per bag. No exchange-rate conversion, tax or delivery surcharge is calculated.
+Content: Booking, acceptance, travel, inspection/treatment, completion and feedback.
 
-### BR02 — Quantity and bundles
+Operations: Follow the process and start a demonstration booking.
 
-A booking contains one service and an integer quantity from one to six. Refresh total = floor(quantity ÷ 3) × 45 + (quantity mod 3) × 18. Four garments cost AED 63; five cost AED 81; six cost AED 90. Other services use unit price × quantity.
+Desktop block composition:
 
-### BR03 — Service targets
-
-Refresh and Stain Rescue model arrival within 30 minutes; treatment time is additional. Rapid Wash models scheduled collection and return within four hours from confirmation. It is excluded from the 30-minute arrival promise.
-
-### BR04 — Location and consent
-
-The visitor chooses one of three fictional pilot locations. Confirmation requires the simulation and fabric-suitability consent checkbox. No GPS or live coverage check runs.
-
-### BR05 — Payment selection
-
-Credit/debit card is the default. Cash and Apple Pay are alternate demo choices. The summary reflects the selection. The site collects no card numbers, wallet credentials or real payments.
-
-### BR06 — Cash and digital outcomes
-
-Card and Apple Pay simulate a hold, release on approval and return on a missed target. Cash is due after service; approval records a demo cash payment. A missed target records no cash collected, not a refund.
-
-### BR07 — Countdown and completion
-
-The deadline is calculated from confirmation time. Arrival or laundry return stops the countdown; approval completes the service. Expiry or the late-outcome control produces the missed-target state. A new booking resets the service flow and defaults payment to card.
-
-### BR08 — Fabric routing
-
-Every combination of eight fabrics and six stains has a fixed outcome. Sensitive materials and ink are referred for specialist inspection; eligible combinations require a technician assessment. No guaranteed removal claim is made.
-
-### BR09 — Contact validation
-
-Name, syntactically valid email and message are required, with 100, 254 and 3,000 character limits. The form validates in the browser and never sends, stores or logs the inquiry.
-
-### BR10 — Navigation and persistence
-
-Five hash routes identify the screens. Unknown routes fall back to Home. In-page navigation resets scroll and directs focus to the heading. Browser back/forward changes routes. Booking state is in memory and resets on reload.
-
-## 4. Process diagrams
-
-### Booking and payment lifecycle
-
-```mermaid
-flowchart TD
-  A[Select service and quantity] --> B[Calculate AED total]
-  B --> C[Choose location and payment]
-  C --> D{Consent accepted?}
-  D -->|No| C
-  D -->|Yes| E[Confirm demo and start deadline]
-  E --> F{Arrival or return within target?}
-  F -->|Yes| G[Stop timer and inspect garments]
-  G --> H[Approve completion]
-  H --> I{Payment method}
-  I -->|Cash| J[Record demo cash payment]
-  I -->|Card or Apple Pay| K[Release simulated hold]
-  F -->|No or expired| L{Payment method}
-  L -->|Cash| M[No cash collected]
-  L -->|Card or Apple Pay| N[Return simulated payment]
-  J --> O[Offer another booking]
-  K --> O
-  M --> O
-  N --> O
+```text
+[Shared header]
+[ Customer booking ]
+[ Technician acceptance and travel ]
+[ Assessment, completion and rating ]
+[Shared footer]
 ```
 
-### Fabric assessment
+Mobile block composition:
 
-```mermaid
-flowchart TD
-  A[Choose fabric and stain] --> B[Read fixed combination matrix]
-  B --> C{Treatment routing}
-  C -->|Eligible| D[Technician assessment and booking action]
-  C -->|Sensitive or specialist only| E[Specialist referral without on-site booking action]
+```text
+[Logo / booking / menu]
+[ Customer booking ]
+[ Technician acceptance and travel ]
+[ Assessment, completion and rating ]
+[Footer]
 ```
 
-### Contact inquiry
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
 
-```mermaid
-flowchart TD
-  A[Enter name, email, category and message] --> B{Required fields and email valid?}
-  B -->|No| C[Native field validation]
-  C --> A
-  B -->|Yes| D[Show local preview confirmation]
-  D --> E[No delivery or persistence]
-  D -->|Edit fields| A
+States: Explains simulation and same-browser demonstration.
+
+## Policies
+
+Purpose: Describe scoped proposed commitments, exclusions and local data handling.
+
+Content: Arrival/completion targets, fee waiver, pricing, cancellation, damage, stains and privacy.
+
+Operations: Read draft conditions and locate support or data-deletion controls.
+
+Desktop block composition:
+
+```text
+[Shared header]
+[ Draft policy notice ]
+[ Timing and guarantee ]
+[ Cancellation and treatment limits ]
+[ Privacy and future records ]
+[Shared footer]
 ```
 
-## 5. Layout system and accessibility
+Mobile block composition:
 
-### Visual hierarchy
+```text
+[Logo / booking / menu]
+[ Draft policy notice ]
+[ Timing and guarantee ]
+[ Cancellation and treatment limits ]
+[ Privacy and future records ]
+[Footer]
+```
 
-Navy and cream provide the primary contrast, with sage for selected states. Georgia display headings distinguish the service brand from Arial interface text. Each screen has one main heading, plain labels and an obvious primary action.
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
+
+States: Draft terms, not a commercial legal policy.
+
+## Assessment
+
+Purpose: Present concise BUS201 design and implementation evidence separately from customer content.
+
+Content: Sitemap, layouts, rules, diagrams, business analysis and downloadable specification.
+
+Operations: Expand documentation and download supporting design notes.
+
+Desktop block composition:
+
+```text
+[Shared header]
+[ Documentation links ]
+[ Sitemap and screen compositions ]
+[ Rules and process diagrams ]
+[ Business analysis ]
+[Shared footer]
+```
+
+Mobile block composition:
+
+```text
+[Logo / booking / menu]
+[ Documentation links ]
+[ Sitemap and screen compositions ]
+[ Rules and process diagrams ]
+[ Business analysis ]
+[Footer]
+```
+
+Layout: Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.
+
+States: Native expandable content; no team-member allocation in customer pages.
+
+## Business rules
+
+### BR01: Services
+
+Express Pressing, Steam Refresh and Express Stain Treatment are available; Rapid Wash is unavailable pending validation.
+
+### BR02: Pricing
+
+Pressing/refresh: AED 18 per garment, three for 45, six for 90; stain: AED 24 per spot. Add AED 5 per booking. No additional tax or delivery surcharge is modelled.
+
+### BR03: Quantity and eligibility
+
+One available service per order, one to six total garments/spots, integer quantities, only listed garment types. Sensitive fabrics and ink route to specialists.
+
+### BR04: Location and slots
+
+Name, valid email, phone, eligible fictional zone, address and building are required. Scheduling is 30 minutes to seven days ahead in device-local time.
+
+### BR05: Consent and persistence
+
+Explicit demo/storage/treatment consent is required. Save must succeed before booking confirmation. Orders and profile are local to the browser origin.
+
+### BR06: Service targets
+
+Arrival target is 30 minutes from immediate confirmation or scheduled start. Pressing/refresh completion target is 60 minutes from start. Stains require assessment, not a fixed deadline.
+
+### BR07: Promotional waiver
+
+Only immediate pressing/refresh orders of up to three eligible garments qualify. Late completion waives the AED 5 service fee; care charges remain. Scheduled, stain and larger bookings are excluded.
+
+### BR08: Assignment and status
+
+An available capable technician accepts one active job at a time. Only that technician advances assigned ? en route ? arrived ? in progress ? completed. No skipping or duplicate completion. Declines leave the request for other technicians.
+
+### BR09: Cancellation and feedback
+
+Customer cancellation is allowed only while confirmed or assigned. Closed orders cannot advance. One rating from one to five and optional comment can be saved after completion.
+
+### BR10: Payments and privacy
+
+Card/cash/Apple Pay are simulations; no real payment details collected. Support requests are validated and stored locally, not sent. Clear demo data deletes profile, orders, feedback and requests. Local event history is not blockchain.
+
+## Layout analysis
+
+### Visual identity
+
+Retained navy, cream, sage, Georgia headings, Arial controls and four local generated editorial images.
 
 ### Block compositing
 
-Each page combines reusable header, content modules and footer. Desktop hero and process modules use two columns, service modules use three, and booking pairs the active form with a summary. These blocks are shown in the five compositions below.
-
-### Responsive layouts
-
-The content container has equal side margins and a 1,280 px maximum width. Layout rules adapt at 1,100, 850 and 639 px. Under 850 px navigation becomes a menu; under 639 px main splits and cards become one column.
-
-### Forms and interaction
-
-Visible labels identify every field. Native radio groups provide service and payment choices, the quantity control is bounded, consent is required, and selections update the order summary before confirmation.
+Reusable header and footer wrap route-specific modules. Three service columns and form/summary splits stack on phones.
 
 ### Accessibility
 
-The implementation includes a skip link, heading structure, visible keyboard focus, current-page markers, alt text, named icon controls, status announcements and reduced-motion rules. These are implemented features, not a claim of certified accessibility.
+One h1 per route, skip target, visible focus, native labels and required fields, status messages, disclosure controls and reduced motion.
 
-### Images and performance
+### Responsive layout
 
-Four local JPEG editorial images have explicit dimensions. The hero image is prioritised and lower-page images load lazily. No external image or font request is required. All photography is generated concept imagery.
+Fluid containers, one-column phone forms, wrapping status stages and an all-pages menu; long order IDs wrap and comparison tables scroll.
 
-## 6. Data flow and implementation documentation
-
-```mermaid
-flowchart LR
-  A[Visitor input] --> B[React memory state]
-  C[Local service and fabric data] --> D[Pricing, routing and deadline logic]
-  B --> D
-  D --> E[AED summary, outcome and countdown]
-```
+## Implementation
 
 ### Implementation
 
-React renders five route-selected pages; Vite builds a static dist directory. App.jsx owns navigation, form and countdown state. booking.js owns pricing, service windows and payment messages. mockData.js supplies service, fabric, FAQ and business data.
+React 19 and Vite, hash routing, pure domain operations, localStorage persistence and same-origin storage-event synchronisation.
 
-### Data inputs
+### Privacy boundary
 
-The booking accepts a service ID, integer quantity, one predefined location, a payment-method ID and consent. The assessment guide accepts fabric/stain IDs. Contact accepts name, email, category and message.
+One demo account in this browser; no real authentication, cross-device sync, GPS, payment gateway, blockchain or server order database. Use fictional details.
 
-### Derived outputs
+### Data models
 
-The browser derives an AED order total, an assessment route, a confirmation deadline, remaining time and a simulated payment/service outcome. No order database, technician API or payment gateway is connected.
+Customer: identity/contact/preferences/addresses. Technician: capabilities/availability; assigned jobs are derived. Service: price/eligibility/timing. Booking: UUID, snapshot inputs, assigned actor, pricing, times, status and event history.
 
-### State and privacy
+### Future architecture
 
-Choices and countdown state live only in React memory. Reloading clears the order. The contact form neither sends nor persists its contents. Native telephone links hand control to the device dialler.
+A shared backend, authenticated roles, signed events and verified consent would be needed before cross-device commercial use. Decentralised identity or tamper-evident records remain future options.
 
-### Production boundary
+### Assessment verification
 
-Real dispatch, address validation, persistence, messaging, cash receipts, card processing and Apple Pay authorisation would require separate server integrations. Demo outcomes must not be interpreted as commercial guarantees.
+The original rubric was not found locally. These are route-selected screens in one HTML application. No fabricated surveys, operating results or usability test results.
 
-### Verification
+## Acceptance scenarios
 
-Automated checks cover service prices, quantities, bundles, service windows, payment outcomes and all five page renders. Production build and lint run locally. Interactive browser and visual verification remain outstanding because headless browser connections failed.
+### Booking
 
-## 7. Acceptance checklist
+Create an immediate order, reload, accept in Technician demo and advance all stages; view the same timeline in Tracking.
 
-- **Navigation:** Each of the five routes displays its named screen; invalid routes open Home.
-- **Pricing:** Refresh quantities 1–6 total AED 18, 36, 45, 63, 81 and 90. Stain ×4 is AED 96; wash ×6 is AED 192.
-- **Validation:** Quantity cannot exceed 1–6. Missing consent blocks confirmation; invalid email or empty required inquiry fields block submission.
-- **Service timing:** Refresh/stain start at 30:00. Rapid Wash starts at 240:00 and describes a four-hour return target.
-- **Payment outcomes:** Card/Apple Pay show simulated holds and releases; cash shows no advance hold and no refund on a missed target.
-- **Assessment guide:** All 48 fabric/stain combinations resolve; specialist outcomes do not expose the stain-booking action.
-- **Responsive review:** Review navigation, wireframes, forms and table scrolling at 1440, 1024, 768 and 390 px. Manual visual checks remain pending.
+### Validation
 
-## 8. Running and rebuilding
+Reject unavailable services, unsupported garments, fractional quantities, missing consent, invalid profile/location and invalid schedule.
 
-Run `npm install` (or `npm ci` with the committed lockfile), `npm run dev`, `npm run lint`, `node src/booking.test.js` and `npm run build`. Regenerate this document with `node scripts/generate-design-spec.mjs` after editing the shared design specification data. `npm run preview` serves the production build locally.
+### Integrity
+
+Reject nonassigned technicians, skipped transitions, duplicate completion, cancellation after departure and stale storage revisions.
+
+### Guarantee
+
+Late eligible completion waives only AED 5; scheduled, stain and larger orders remain ineligible.
+
+### Persistence
+
+Successful saves survive reload; corrupt/unavailable storage surfaces a failure and does not silently confirm.
+
+### Usability
+
+Manual keyboard, mobile/tablet/desktop and full browser workflow review must be recorded honestly, separately from automated logic/render tests.
+
+## Customer and technician flow
+
+```mermaid
+flowchart TD
+  A[Select service and garments] --> B[Customer, location and slot]
+  B --> C{Inputs and consent valid?}
+  C -->|No| B
+  C -->|Yes| D{Local save succeeds?}
+  D -->|No| E[Show storage error]
+  D -->|Yes| F[Confirmed order]
+  F --> G{Eligible technician accepts?}
+  G -->|Decline| H[Other capable technician]
+  H --> G
+  G -->|Yes| I[Assigned]
+  I --> J[En route]
+  J --> K[Arrived]
+  K --> L[In progress]
+  L --> M[Completed]
+  M --> N{Eligible and late?}
+  N -->|Yes| O[Waive AED 5 service fee]
+  N -->|No| P[Keep estimated charges]
+  O --> Q[Customer feedback]
+  P --> Q
+  F --> R[Cancel before en route]
+  I --> R
+```
+
+## Data architecture
+
+```mermaid
+flowchart LR
+  Customer[Customer inputs] --> Domain[Validated domain operations]
+  Technician[Technician actions] --> Domain
+  Domain --> Storage[Browser localStorage]
+  Storage --> Views[Tracking and dashboards]
+  Events[Local event records] --> Views
+```
+
+The event log is editable, local and not a blockchain. No real dispatch, payments, GPS or cross-device service exists.

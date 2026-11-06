@@ -21,10 +21,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
-      - run: node src/booking.test.js
-      - run: node src/designSpec.test.js
       - run: node scripts/generate-design-spec.mjs
+      - run: npm test
       - run: npm run build
+      - run: node scripts/production-check.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

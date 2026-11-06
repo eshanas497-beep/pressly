@@ -1,83 +1,370 @@
-﻿export const screenDesigns = [
+export const screenDesigns = [
   {
-    id: 'home', title: 'Home', purpose: 'Introduce the garment-care service and give visitors a direct route to booking.',
-    content: 'Service proposition, editorial garment image, starting price in AED, three service choices, three-step process and arrival-target explanation.',
-    action: 'Book a service opens the booking page with Express Refresh selected. Each service card opens booking with its own service selected.',
-    rows: [['Service headline + booking action', 'Wardrobe editorial image'], ['Express Refresh', 'Stain Rescue', 'Rapid Wash'], ['Three-step service process', 'Steam-care editorial image'], ['Arrival target + booking demo link']],
-    mobile: 'Headline, description and full-width booking button come first, followed by the hero image. Service cards and process blocks stack vertically.',
-    states: 'All three services are available. Home has no payment fields or account requirement.',
+    "id": "home",
+    "title": "Home",
+    "purpose": "Introduce on-site garment care and convert an urgent need into a demonstration booking.",
+    "content": "Hero, services, workflow, use cases, qualified sustainability, fee-waiver policy, illustrative testimonials and FAQs.",
+    "action": "Book express care or open the full how-it-works process.",
+    "rows": [
+      [
+        "Headline and booking actions",
+        "Wardrobe image"
+      ],
+      [
+        "Three care cards"
+      ],
+      [
+        "Process and use cases"
+      ],
+      [
+        "Technology, guarantee and FAQ"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "All current services bookable; Rapid Wash is not sold."
   },
   {
-    id: 'services', title: 'Services', purpose: 'Explain prices, treatment limits and fabric suitability before a booking.',
-    content: 'Express Refresh at AED 18 per garment, Stain Rescue at AED 24 per spot, Rapid Wash at AED 32 per bag, refresh bundle prices, fabric and stain selectors and assessment outcome.',
-    action: 'Book a service card, or choose a fabric and stain to see either a technician-assessment route or a specialist-care referral.',
-    rows: [['Services heading + AED pricing introduction'], ['Express Refresh + price', 'Stain Rescue + price', 'Rapid Wash + price'], ['Fabric-care explanation', 'Fabric selector + stain selector + result']],
-    mobile: 'Service cards stack in one column. Fabric-care explanation precedes the selectors, with each field on its own row.',
-    states: 'Eight fabrics and six stains produce 48 fixed routing combinations. Specialist outcomes do not offer an on-site stain booking action. The guide is not a trained AI model.',
+    "id": "services",
+    "title": "Services",
+    "purpose": "Explain suitability, editable demonstration prices and service limits before checkout.",
+    "content": "Three available services, dynamic calculator, future Rapid Wash and fixed fabric assessment.",
+    "action": "Choose service and quantity, calculate fees or inspect a fabric and stain.",
+    "rows": [
+      [
+        "Service heading"
+      ],
+      [
+        "Three service cards"
+      ],
+      [
+        "Calculator explanation",
+        "Inputs and price"
+      ],
+      [
+        "Future washing",
+        "Fabric guide"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "Invalid quantities show errors; specialist outcomes do not offer on-site treatment."
   },
   {
-    id: 'booking', title: 'Booking', purpose: 'Configure an order, confirm a location and payment preference, and demonstrate service outcomes.',
-    content: 'Three-step progress, service selection, quantity controls, selected location, cash/card/Apple Pay choices, consent, AED total, service countdown and outcome controls.',
-    action: 'Choose care → location and payment → confirm demo booking → simulate arrival or laundry return → approve service, or demonstrate a missed target.',
-    rows: [['Booking heading + simulation disclosure'], ['01 Choose care → 02 Location & payment → 03 Track service'], ['Active booking form / countdown', 'Service + quantity + payment + AED summary']],
-    mobile: 'Progress remains visible above the form. The form and order summary stack, primary actions become full width and fields retain readable text.',
-    states: 'Step 1 shows services and quantities. Step 2 shows location, payment and required consent. Step 3 shows active, arrived/returned, completed or missed-target states. Cash never displays a payment hold or refund.',
+    "id": "booking",
+    "title": "Book Express Care",
+    "purpose": "Create a validated, uniquely identified and persistent demonstration order.",
+    "content": "Six steps: service, garments, customer/location, time, review, checkout.",
+    "action": "Validate inputs, review pricing and consent, save order and open tracking.",
+    "rows": [
+      [
+        "Progress indicator"
+      ],
+      [
+        "Step form",
+        "Live summary"
+      ],
+      [
+        "Validation and navigation"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "Loading, invalid inputs, save failure and saved confirmation are explicit."
   },
   {
-    id: 'about', title: 'The project', purpose: 'Document the venture and provide the design specification needed to understand and reproduce the solution.',
-    content: 'Mission and values, sitemap, five screen compositions, content analysis, layout analysis, business rules, process and data-flow diagrams, implementation boundaries, feasibility, competitive analysis and Business Model Canvas.',
-    action: 'Read or expand the design sections, follow sitemap links to the five pages, or download the Markdown specification.',
-    rows: [['Project heading + garment editorial'], ['Mission', 'Vision and values'], ['Design specification + sitemap + screen blocks'], ['Rules + process diagrams + implementation documentation'], ['Feasibility + competitive analysis + Business Model Canvas']],
-    mobile: 'Documentation stays in one reading column. Screen wireframes include separate desktop and mobile compositions. Wide comparison tables scroll within their own region.',
-    states: 'Documentation uses native expandable sections. No team-member allocation or UI/UX staff-role content is displayed.',
+    "id": "tracking",
+    "title": "Tracking",
+    "purpose": "Show the actual saved order status, target times and event history.",
+    "content": "Order selector, booking details, six status stages and timestamped events.",
+    "action": "Switch order, cancel before en route, view technician demo and rate completion.",
+    "rows": [
+      [
+        "Demo notice and order selector"
+      ],
+      [
+        "Order details and price"
+      ],
+      [
+        "Status stages"
+      ],
+      [
+        "Event history and feedback"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "No orders, active, overdue, completed, cancelled and missing assignment states."
   },
   {
-    id: 'contact', title: 'Contact', purpose: 'Provide UAE phone contact and a validated feedback-form demonstration.',
-    content: 'Phone links +971 56 456 8769 and +971 58 987 6757, name, email, category, message, submission explanation and service FAQs.',
-    action: 'Tap a phone number to open the device dialler, or validate a demo inquiry. A valid form shows a local confirmation that no message was sent or saved.',
-    rows: [['Contact heading + introduction'], ['UAE phone numbers + contact explanation', 'Name + email + category + message + preview action'], ['Frequently asked questions']],
-    mobile: 'Telephone links appear before the form. Name and email stack; FAQs remain keyboard-accessible disclosure rows.',
-    states: 'Name, valid email and message are required. Name is limited to 100 characters, email to 254 and message to 3,000. Editing after a preview clears the confirmation. Phone calls are initiated by the visitor.',
+    "id": "dashboard",
+    "title": "My account",
+    "purpose": "Manage the single-browser customer profile and order history.",
+    "content": "Active/completed orders, rebooking, saved addresses, preferences, inquiries and privacy controls.",
+    "action": "Rebook, open tracking, save profile or explicitly delete local demo data.",
+    "rows": [
+      [
+        "Demo account notice and totals"
+      ],
+      [
+        "Active orders",
+        "History"
+      ],
+      [
+        "Profile and saved addresses"
+      ],
+      [
+        "Support inbox and clear-data action"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "Empty histories, save validation, confirmation and storage failures."
   },
+  {
+    "id": "technician",
+    "title": "Technician demo",
+    "purpose": "Demonstrate capability-based acceptance and service progress.",
+    "content": "Role selector, capabilities, assigned jobs, available requests, completions and illustrative earnings.",
+    "action": "Accept or decline a request, advance only an assigned job and inspect tracking.",
+    "rows": [
+      [
+        "Role and capabilities"
+      ],
+      [
+        "Assigned jobs",
+        "Available requests"
+      ],
+      [
+        "Completed jobs and earnings"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "Busy, unsupported, declined, scheduled-not-started and no-job states."
+  },
+  {
+    "id": "about",
+    "title": "About us",
+    "purpose": "Explain the startup mission and on-site business model without technical customer clutter.",
+    "content": "Mission, values, customer problem, gig model, measured sustainability and future expansion.",
+    "action": "Read the venture story or open the separate assessment page.",
+    "rows": [
+      [
+        "Editorial garment image"
+      ],
+      [
+        "Mission",
+        "Values"
+      ],
+      [
+        "Operating model and future work"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "Static explanation with explicit prototype limits."
+  },
+  {
+    "id": "contact",
+    "title": "Contact & support",
+    "purpose": "Validate and save a local support request with an honest receipt.",
+    "content": "User-supplied project phone contacts, request form, FAQ and policy links.",
+    "action": "Save local inquiry and inspect it in My account; optionally open a phone dialler.",
+    "rows": [
+      [
+        "Support and project contacts",
+        "Inquiry form"
+      ],
+      [
+        "FAQ"
+      ],
+      [
+        "Policy and booking support links"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "Invalid inputs, saved local receipt and storage failure; no email delivery."
+  },
+  {
+    "id": "how-it-works",
+    "title": "How it works",
+    "purpose": "Explain the customer-to-technician lifecycle visually.",
+    "content": "Booking, acceptance, travel, inspection/treatment, completion and feedback.",
+    "action": "Follow the process and start a demonstration booking.",
+    "rows": [
+      [
+        "Customer booking"
+      ],
+      [
+        "Technician acceptance and travel"
+      ],
+      [
+        "Assessment, completion and rating"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "Explains simulation and same-browser demonstration."
+  },
+  {
+    "id": "policies",
+    "title": "Policies",
+    "purpose": "Describe scoped proposed commitments, exclusions and local data handling.",
+    "content": "Arrival/completion targets, fee waiver, pricing, cancellation, damage, stains and privacy.",
+    "action": "Read draft conditions and locate support or data-deletion controls.",
+    "rows": [
+      [
+        "Draft policy notice"
+      ],
+      [
+        "Timing and guarantee"
+      ],
+      [
+        "Cancellation and treatment limits"
+      ],
+      [
+        "Privacy and future records"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "Draft terms, not a commercial legal policy."
+  },
+  {
+    "id": "assessment",
+    "title": "Assessment",
+    "purpose": "Present concise BUS201 design and implementation evidence separately from customer content.",
+    "content": "Sitemap, layouts, rules, diagrams, business analysis and downloadable specification.",
+    "action": "Expand documentation and download supporting design notes.",
+    "rows": [
+      [
+        "Documentation links"
+      ],
+      [
+        "Sitemap and screen compositions"
+      ],
+      [
+        "Rules and process diagrams"
+      ],
+      [
+        "Business analysis"
+      ]
+    ],
+    "mobile": "Blocks stack in reading order on phones; wide tables scroll locally, navigation opens a keyboard-accessible menu and form controls retain readable labels and tap targets.",
+    "states": "Native expandable content; no team-member allocation in customer pages."
+  }
 ];
 
 export const businessRules = [
-  ['BR01', 'Pricing and currency', 'All displayed prices use AED. Refresh costs 18 per garment, stain care 24 per spot and wash 32 per bag. No exchange-rate conversion, tax or delivery surcharge is calculated.'],
-  ['BR02', 'Quantity and bundles', 'A booking contains one service and an integer quantity from one to six. Refresh total = floor(quantity ÷ 3) × 45 + (quantity mod 3) × 18. Four garments cost AED 63; five cost AED 81; six cost AED 90. Other services use unit price × quantity.'],
-  ['BR03', 'Service targets', 'Refresh and Stain Rescue model arrival within 30 minutes; treatment time is additional. Rapid Wash models scheduled collection and return within four hours from confirmation. It is excluded from the 30-minute arrival promise.'],
-  ['BR04', 'Location and consent', 'The visitor chooses one of three fictional pilot locations. Confirmation requires the simulation and fabric-suitability consent checkbox. No GPS or live coverage check runs.'],
-  ['BR05', 'Payment selection', 'Credit/debit card is the default. Cash and Apple Pay are alternate demo choices. The summary reflects the selection. The site collects no card numbers, wallet credentials or real payments.'],
-  ['BR06', 'Cash and digital outcomes', 'Card and Apple Pay simulate a hold, release on approval and return on a missed target. Cash is due after service; approval records a demo cash payment. A missed target records no cash collected, not a refund.'],
-  ['BR07', 'Countdown and completion', 'The deadline is calculated from confirmation time. Arrival or laundry return stops the countdown; approval completes the service. Expiry or the late-outcome control produces the missed-target state. A new booking resets the service flow and defaults payment to card.'],
-  ['BR08', 'Fabric routing', 'Every combination of eight fabrics and six stains has a fixed outcome. Sensitive materials and ink are referred for specialist inspection; eligible combinations require a technician assessment. No guaranteed removal claim is made.'],
-  ['BR09', 'Contact validation', 'Name, syntactically valid email and message are required, with 100, 254 and 3,000 character limits. The form validates in the browser and never sends, stores or logs the inquiry.'],
-  ['BR10', 'Navigation and persistence', 'Five hash routes identify the screens. Unknown routes fall back to Home. In-page navigation resets scroll and directs focus to the heading. Browser back/forward changes routes. Booking state is in memory and resets on reload.'],
+  [
+    "BR01",
+    "Services",
+    "Express Pressing, Steam Refresh and Express Stain Treatment are available; Rapid Wash is unavailable pending validation."
+  ],
+  [
+    "BR02",
+    "Pricing",
+    "Pressing/refresh: AED 18 per garment, three for 45, six for 90; stain: AED 24 per spot. Add AED 5 per booking. No additional tax or delivery surcharge is modelled."
+  ],
+  [
+    "BR03",
+    "Quantity and eligibility",
+    "One available service per order, one to six total garments/spots, integer quantities, only listed garment types. Sensitive fabrics and ink route to specialists."
+  ],
+  [
+    "BR04",
+    "Location and slots",
+    "Name, valid email, phone, eligible fictional zone, address and building are required. Scheduling is 30 minutes to seven days ahead in device-local time."
+  ],
+  [
+    "BR05",
+    "Consent and persistence",
+    "Explicit demo/storage/treatment consent is required. Save must succeed before booking confirmation. Orders and profile are local to the browser origin."
+  ],
+  [
+    "BR06",
+    "Service targets",
+    "Arrival target is 30 minutes from immediate confirmation or scheduled start. Pressing/refresh completion target is 60 minutes from start. Stains require assessment, not a fixed deadline."
+  ],
+  [
+    "BR07",
+    "Promotional waiver",
+    "Only immediate pressing/refresh orders of up to three eligible garments qualify. Late completion waives the AED 5 service fee; care charges remain. Scheduled, stain and larger bookings are excluded."
+  ],
+  [
+    "BR08",
+    "Assignment and status",
+    "An available capable technician accepts one active job at a time. Only that technician advances assigned ? en route ? arrived ? in progress ? completed. No skipping or duplicate completion. Declines leave the request for other technicians."
+  ],
+  [
+    "BR09",
+    "Cancellation and feedback",
+    "Customer cancellation is allowed only while confirmed or assigned. Closed orders cannot advance. One rating from one to five and optional comment can be saved after completion."
+  ],
+  [
+    "BR10",
+    "Payments and privacy",
+    "Card/cash/Apple Pay are simulations; no real payment details collected. Support requests are validated and stored locally, not sent. Clear demo data deletes profile, orders, feedback and requests. Local event history is not blockchain."
+  ]
 ];
 
 export const layoutAnalysis = [
-  ['Visual hierarchy', 'Navy and cream provide the primary contrast, with sage for selected states. Georgia display headings distinguish the service brand from Arial interface text. Each screen has one main heading, plain labels and an obvious primary action.'],
-  ['Block compositing', 'Each page combines reusable header, content modules and footer. Desktop hero and process modules use two columns, service modules use three, and booking pairs the active form with a summary. These blocks are shown in the five compositions below.'],
-  ['Responsive layouts', 'The content container has equal side margins and a 1,280 px maximum width. Layout rules adapt at 1,100, 850 and 639 px. Under 850 px navigation becomes a menu; under 639 px main splits and cards become one column.'],
-  ['Forms and interaction', 'Visible labels identify every field. Native radio groups provide service and payment choices, the quantity control is bounded, consent is required, and selections update the order summary before confirmation.'],
-  ['Accessibility', 'The implementation includes a skip link, heading structure, visible keyboard focus, current-page markers, alt text, named icon controls, status announcements and reduced-motion rules. These are implemented features, not a claim of certified accessibility.'],
-  ['Images and performance', 'Four local JPEG editorial images have explicit dimensions. The hero image is prioritised and lower-page images load lazily. No external image or font request is required. All photography is generated concept imagery.'],
+  [
+    "Visual identity",
+    "Retained navy, cream, sage, Georgia headings, Arial controls and four local generated editorial images."
+  ],
+  [
+    "Block compositing",
+    "Reusable header and footer wrap route-specific modules. Three service columns and form/summary splits stack on phones."
+  ],
+  [
+    "Accessibility",
+    "One h1 per route, skip target, visible focus, native labels and required fields, status messages, disclosure controls and reduced motion."
+  ],
+  [
+    "Responsive layout",
+    "Fluid containers, one-column phone forms, wrapping status stages and an all-pages menu; long order IDs wrap and comparison tables scroll."
+  ]
 ];
 
 export const documentation = [
-  ['Implementation', 'React renders five route-selected pages; Vite builds a static dist directory. App.jsx owns navigation, form and countdown state. booking.js owns pricing, service windows and payment messages. mockData.js supplies service, fabric, FAQ and business data.'],
-  ['Data inputs', 'The booking accepts a service ID, integer quantity, one predefined location, a payment-method ID and consent. The assessment guide accepts fabric/stain IDs. Contact accepts name, email, category and message.'],
-  ['Derived outputs', 'The browser derives an AED order total, an assessment route, a confirmation deadline, remaining time and a simulated payment/service outcome. No order database, technician API or payment gateway is connected.'],
-  ['State and privacy', 'Choices and countdown state live only in React memory. Reloading clears the order. The contact form neither sends nor persists its contents. Native telephone links hand control to the device dialler.'],
-  ['Production boundary', 'Real dispatch, address validation, persistence, messaging, cash receipts, card processing and Apple Pay authorisation would require separate server integrations. Demo outcomes must not be interpreted as commercial guarantees.'],
-  ['Verification', 'Automated checks cover service prices, quantities, bundles, service windows, payment outcomes and all five page renders. Production build and lint run locally. Interactive browser and visual verification remain outstanding because headless browser connections failed.'],
+  [
+    "Implementation",
+    "React 19 and Vite, hash routing, pure domain operations, localStorage persistence and same-origin storage-event synchronisation."
+  ],
+  [
+    "Privacy boundary",
+    "One demo account in this browser; no real authentication, cross-device sync, GPS, payment gateway, blockchain or server order database. Use fictional details."
+  ],
+  [
+    "Data models",
+    "Customer: identity/contact/preferences/addresses. Technician: capabilities/availability; assigned jobs are derived. Service: price/eligibility/timing. Booking: UUID, snapshot inputs, assigned actor, pricing, times, status and event history."
+  ],
+  [
+    "Future architecture",
+    "A shared backend, authenticated roles, signed events and verified consent would be needed before cross-device commercial use. Decentralised identity or tamper-evident records remain future options."
+  ],
+  [
+    "Assessment verification",
+    "The original rubric was not found locally. These are route-selected screens in one HTML application. No fabricated surveys, operating results or usability test results."
+  ]
 ];
 
 export const acceptanceChecks = [
-  ['Navigation', 'Each of the five routes displays its named screen; invalid routes open Home.'],
-  ['Pricing', 'Refresh quantities 1–6 total AED 18, 36, 45, 63, 81 and 90. Stain ×4 is AED 96; wash ×6 is AED 192.'],
-  ['Validation', 'Quantity cannot exceed 1–6. Missing consent blocks confirmation; invalid email or empty required inquiry fields block submission.'],
-  ['Service timing', 'Refresh/stain start at 30:00. Rapid Wash starts at 240:00 and describes a four-hour return target.'],
-  ['Payment outcomes', 'Card/Apple Pay show simulated holds and releases; cash shows no advance hold and no refund on a missed target.'],
-  ['Assessment guide', 'All 48 fabric/stain combinations resolve; specialist outcomes do not expose the stain-booking action.'],
-  ['Responsive review', 'Review navigation, wireframes, forms and table scrolling at 1440, 1024, 768 and 390 px. Manual visual checks remain pending.'],
+  [
+    "Booking",
+    "Create an immediate order, reload, accept in Technician demo and advance all stages; view the same timeline in Tracking."
+  ],
+  [
+    "Validation",
+    "Reject unavailable services, unsupported garments, fractional quantities, missing consent, invalid profile/location and invalid schedule."
+  ],
+  [
+    "Integrity",
+    "Reject nonassigned technicians, skipped transitions, duplicate completion, cancellation after departure and stale storage revisions."
+  ],
+  [
+    "Guarantee",
+    "Late eligible completion waives only AED 5; scheduled, stain and larger orders remain ineligible."
+  ],
+  [
+    "Persistence",
+    "Successful saves survive reload; corrupt/unavailable storage surfaces a failure and does not silently confirm."
+  ],
+  [
+    "Usability",
+    "Manual keyboard, mobile/tablet/desktop and full browser workflow review must be recorded honestly, separately from automated logic/render tests."
+  ]
 ];

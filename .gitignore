@@ -25,6 +25,12 @@ dist-ssr
 
 # Local review files and browser profiles
 .review/
+# Local development instructions and hosting metadata
+AGENTS.md
+HANDOFF.md
+IMPLEMENTATION.md
+.openai/
+.taste-skill/
 # Local credentials and secrets
 .env
 .env.*

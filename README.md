@@ -1,50 +1,78 @@
-﻿# PRESSLY
+# PRESSLY
 
-A React + Vite garment-care assessment prototype with five screens: Home, Services, Booking, The project and Contact.
+**Your Clothes. Ready When Life Happens.**
 
-## Run locally
+A BUS201 prototype for on-demand garment care at the customer's home, hotel or office. Built with React 19, Vite, CSS, Tailwind and Lucide icons.
+
+## Start
 
 ```sh
 npm ci
 npm run dev
 ```
 
-## Checks and build
+Use Node 22.12 or later supported by Vite. On Windows PowerShell use `npm.cmd` if script execution is restricted.
 
 ```sh
-npm run lint
-node src/booking.test.js
 node scripts/generate-design-spec.mjs
+npm test
+npm run lint
 npm run build
+node scripts/production-check.mjs
 npm run preview
 ```
 
-## Design documentation
+## Try the complete demo
 
-The Project page contains the sitemap, five desktop/mobile block compositions, content and layout analysis, business rules, process diagrams and implementation notes. The matching specification is in [docs/design-specification.md](docs/design-specification.md), with a downloadable copy under public/.
+1. Open Services, inspect the calculator and book an available service.
+2. Complete service, garments, fictional customer/location, time, review and demo checkout.
+3. Tracking displays the saved order and its unique ID.
+4. Open the all-pages menu → Technician demo. Select a capable technician and accept the request.
+5. Advance the job through en route, arrived, in progress and completed. Scheduled jobs cannot start before the selected slot.
+6. Return to Tracking or My account, inspect status events, reload and save feedback.
+7. Try rebooking, profile changes, local support requests and cancellation before departure.
 
-## Prototype boundaries
+All views share one browser's localStorage. Same-origin tabs refresh on storage events; stale saves are rejected. Nothing synchronises to another browser or device. If storage is blocked or full, an error appears and a successful booking is not claimed. My account offers explicit local-data deletion. Use fictional contact and address details, particularly on shared devices.
 
-Prices use AED. Refresh and stain bookings model 30-minute arrival; Rapid Wash models a four-hour return. Cash, credit/debit card and Apple Pay are demo selections. No payment gateway, blockchain, GPS dispatch, contact-form delivery or persistent order store is connected. Images are generated editorial concepts. User-provided UAE contact numbers appear on Contact.
+## Screens
 
-## Source structure
+Home, Services, Book Express Care, Tracking, My account, Technician demo, About us, Contact & support, How it works, Policies and a separate Assessment page. These are hash routes inside one HTML application. Main navigation stays focused; the all-pages menu and footer expose every screen.
 
-- src/App.jsx: page navigation and booking/contact interactions
-- src/DesignSpecification.jsx: visible design documentation
-- src/data/designSpec.js: shared documentation source
-- src/data/mockData.js: service, fabric and business datasets
-- src/booking.js: pricing, timers and payment semantics
-- src/index.css: responsive visual system
-- public/images: local editorial image assets
+## Prices and timing
 
-## Hosting
+- Express Pressing and Steam Refresh: AED 18 per garment, three for AED 45, six for AED 90.
+- Express Stain Treatment: AED 24 per eligible spot, subject to assessment.
+- Add AED 5 demonstration service fee per booking. No other tax or surcharge is modelled.
+- Arrival target: 30 minutes after immediate confirmation or selected scheduled start in fictional pilot zones.
+- Pressing/refresh target completion: 60 minutes from start, with suitability/workload limits.
+- Only immediate pressing/refresh orders of up to three garments qualify for the proposed late-completion AED 5 service-fee waiver. Care charges remain. Full draft conditions are on Policies.
+- Rapid Wash is a future, unvalidated concept and cannot be booked.
 
-The production output is dist/. The .openai/hosting.json file records the Sites hosting configuration. Local browser profiles, temporary review files, node_modules, build output and secrets are excluded from source control.
+These are classroom prices and proposed commitments, not verified market rates or operating performance.
 
-## GitHub Pages publication
+## Boundaries
 
-Create a public repository named pressly and push the source on main. In Settings > Pages, choose GitHub Actions as the build source. The included .github/workflows/deploy-pages.yml checks, builds and deploys on each push to main. Relative asset paths support a project URL such as https://USERNAME.github.io/pressly/. The workflow is prepared but has not been run in GitHub.
+No real payments, card collection, Apple Pay authorisation, GPS, dispatch, authentication, AI model, blockchain or server order database. Technician identities, capabilities, slots and earnings are demonstrations. Earnings use an illustrative 60% of garment-care subtotal. Local status events are editable records, not independently verified evidence. Contact forms save to a local demo inbox and never deliver a message. Phone contacts were provided for the project and are not represented as operational service lines. Editorial images are generated concepts. Testimonials are explicitly fictional scenarios.
 
-## Direct static upload
+## Source and assessment documents
 
-Build with npm run build and upload the contents of dist/ to a static host, such as Cloudflare Pages Direct Upload. This publishes the frontend prototype; it does not add payment processing, dispatch or message delivery.
+- `src/domain.js`: service data, typed model descriptions, prices, validation, order lifecycle and feedback.
+- `src/storage.js`: versioned persistence and revision conflict handling.
+- `src/BookingFlow.jsx`: six-step booking and reusable form/price components.
+- `src/OrderPages.jsx`: tracking, customer dashboard and technician workspace.
+- `src/ContentPages.jsx`: customer-facing content, calculator, fixed fabric guide and support.
+- `src/App.jsx`: navigation, state and save boundaries.
+- `assessment/`: six concise company/SDLC/presentation documents, mirrored under `public/assessment/` for download.
+- `src/data/designSpec.js`: screen layouts, rules and documentation source.
+- `docs/design-specification.md`: expanded design notes; generated download at `public/design-specification.md`.
+- `VERIFICATION.md`: executed checks and remaining verification limits.
+
+No original assessment brief was found locally. Confirm the final rubric, 3,000-word interpretation and whether route-selected screens meet any separate-page requirement. Do not present proposed research or usability scenarios as executed studies.
+
+## GitHub Pages
+
+Repository: https://github.com/eshanas497-beep/pressly
+
+The existing workflow checks and builds on pushes to `main`, then deploys `dist/` through GitHub Pages. Settings → Pages must use GitHub Actions as its source. `base: './'` supports the `/pressly/` project path. A successful local build does not confirm deployment: inspect the Actions result and actual published site after pushing.
+
+Local review profiles, dependencies, build output, development instructions, hosting metadata and secrets are excluded from source control. No repository history is rewritten.
