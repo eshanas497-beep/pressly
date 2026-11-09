@@ -44,8 +44,9 @@ Home, Services, Book Express Care, Tracking, My account, Technician demo, About 
 
 ## Prices and timing
 
-- Express Pressing and Steam Refresh: AED 18 per garment, three for AED 45, six for AED 90.
-- Express Stain Treatment: AED 24 per eligible spot, subject to assessment.
+- Express Pressing: AED 10 per garment.
+- Steam Refresh: AED 5 per garment.
+- Express Stain Treatment: AED 20 per eligible spot, subject to assessment.
 - Add AED 5 demonstration service fee per booking. No other tax or surcharge is modelled.
 - Arrival target: 30 minutes after immediate confirmation or selected scheduled start in fictional pilot zones.
 - Pressing/refresh target completion: 60 minutes from start, with suitability/workload limits.

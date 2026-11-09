@@ -6,9 +6,9 @@ const now = Date.parse('2026-11-06T12:00:00Z');
 const input = { serviceId:'pressing', garments:[{type:'Shirt',quantity:1}], customer:{name:'Demo Customer',email:'customer@example.test',phone:'+971 50 000 0000'}, location:{area:areas[0],address:'Fictional Office Street',building:'Demo tower 12',instructions:'Meet in lobby'}, slot:'earliest',scheduledAt:'',paymentMethod:'card',consent:true };
 function order(patch={},state=initialState(),id='test-order') { return createOrder(state,{...input,...patch},now,id); }
 function complete(state,id='test-order',time=now+40*60000,tech='tech-a') { let next=updateOrder(state,id,'accept',tech,now); for(const action of ['en-route','arrived','in-progress','completed']) next=updateOrder(next,id,action,tech,time); return next; }
-for (const id of ['pressing','refresh']) for(const [index,total] of [23,41,50,68,86,95].entries()) assert.equal(bookingTotal(id,index+1),total);
-assert.equal(priceOrder('stain',[{type:'Spot on shirt',quantity:4}]).total,101);
-assert.equal(priceOrder('pressing',[{type:'Shirt',quantity:2},{type:'Trousers',quantity:1}]).subtotal,45);
+for (const [id, totals] of [['pressing', [15,25,35,45,55,65]], ['refresh', [10,15,20,25,30,35]], ['stain', [25,45,65,85,105,125]]]) for(const [index,total] of totals.entries()) assert.equal(bookingTotal(id,index+1),total);
+assert.equal(priceOrder('stain',[{type:'Spot on shirt',quantity:4}]).total,85);
+assert.equal(priceOrder('pressing',[{type:'Shirt',quantity:2},{type:'Trousers',quantity:1}]).subtotal,30);
 for(const q of [0,-1,1.5,7,NaN,Infinity]) assert.throws(()=>bookingTotal('pressing',q));
 assert.throws(()=>bookingTotal('wash',1)); assert.throws(()=>bookingTotal('missing',1));
 assert.throws(()=>priceOrder('pressing',[{type:'Silk',quantity:1}]));
@@ -16,7 +16,7 @@ assert.throws(()=>priceOrder('pressing',[{type:'Shirt',quantity:4},{type:'Trouse
 assert.throws(()=>priceOrder('pressing',[{type:'Shirt',quantity:1},{type:'Shirt',quantity:1}]));
 assert.equal(bookingWindow('pressing'),1800); assert.equal(timerText(-1),'00:00'); assert.equal(timerText(1800),'30:00');
 let state=order(); const first=state.orders[0];
-assert.equal(first.pricing.total,23); assert.equal(first.status,'confirmed'); assert.equal(first.technicianId,null);
+assert.equal(first.pricing.total,15); assert.equal(first.status,'confirmed'); assert.equal(first.technicianId,null);
 assert.equal(first.timing.arrivalAt,new Date(now+30*60000).toISOString()); assert.equal(first.timing.completionAt,new Date(now+60*60000).toISOString()); assert.equal(first.guaranteeEligible,true);
 assert.equal(state.customer.preferredService,'pressing'); assert.equal(state.customer.locations[0],input.location.address);
 assert.throws(()=>order({consent:false})); assert.throws(()=>order({paymentMethod:'crypto'}));
@@ -44,7 +44,7 @@ let moving=updateOrder(assigned,'test-order','en-route','tech-a',now); assert.th
 let done=complete(state); assert.equal(done.orders[0].status,'completed'); assert.equal(done.orders[0].events.length,6); assert.equal(done.orders[0].feeWaived,false);
 assert.equal(first.status,'confirmed','domain operation does not mutate old snapshots');
 assert.throws(()=>updateOrder(done,'test-order','completed','tech-a',now+50*60000));
-let late=complete(state,'test-order',now+61*60000); assert.equal(late.orders[0].feeWaived,true); assert.equal(late.orders[0].pricing.total-late.orders[0].pricing.serviceFee,18);
+let late=complete(state,'test-order',now+61*60000); assert.equal(late.orders[0].feeWaived,true); assert.equal(late.orders[0].pricing.total-late.orders[0].pricing.serviceFee,10);
 assert.equal(complete(order({garments:[{type:'Shirt',quantity:4}]}),'test-order',now+61*60000).orders[0].feeWaived,false);
 const scheduled=order({slot:'scheduled',scheduledAt:new Date(now+60*60000).toISOString()});
 const scheduledAssigned=updateOrder(scheduled,'test-order','accept','tech-a',now);

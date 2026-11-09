@@ -10,7 +10,7 @@ Payment authorisation, cash recording, technician work, slots and earnings are s
 
 ## Automated test cases
 
-Run `npm test`, `npm run lint` and `npm run build`. Tests cover bundles and fees, invalid quantities/services/garments, profile/location/consent/scheduling validation, UUID duplication, technician capability/assignment, declines, busy capacity, skipped transitions, duplicate completion, cancellation, fee-waiver eligibility, feedback, inquiry validation, persistence round trips, corruption/quota errors and stale revisions. Render tests exercise every route, skip target, primary heading and local assets. Record actual results in `VERIFICATION.md`; listing a case here is not evidence it passed.
+Run `npm test`, `npm run lint` and `npm run build`. Tests cover per-service pricing and fees, invalid quantities/services/garments, profile/location/consent/scheduling validation, UUID duplication, technician capability/assignment, declines, busy capacity, skipped transitions, duplicate completion, cancellation, fee-waiver eligibility, feedback, inquiry validation, persistence round trips, corruption/quota errors and stale revisions. Render tests exercise every route, skip target, primary heading and local assets. Record actual results in `VERIFICATION.md`; listing a case here is not evidence it passed.
 
 ## Usability and acceptance plan — not executed results
 

@@ -1,6 +1,6 @@
 # PRESSLY — project status and handoff
 
-Updated: 2026-11-06 (Asia/Dubai).
+Updated: 2026-11-09 (Asia/Dubai).
 
 ## Start here
 
@@ -44,7 +44,7 @@ The user disliked technical sitemap clutter in the customer experience. Keep it 
 
 - Available: **Express Pressing**, **Steam Refresh**, **Express Stain Treatment**.
 - **Rapid Wash is coming soon and cannot be booked.** Its portable-washing concept needs independent validation.
-- Prices are illustrative AED amounts. Pressing/refresh AED 18 per garment, three for 45, six for 90. Care subtotals for quantities 1–6: 18, 36, 45, 63, 81, 90. Stain treatment AED 24 per spot. Add AED 5 service fee per booking. No extra tax/delivery fee modelled.
+- Prices are illustrative AED amounts. Express Pressing AED 10 per garment, Steam Refresh AED 5 per garment, and Express Stain Treatment AED 20 per spot. Flat per-item pricing replaces the former bundles. Add AED 5 service fee per booking. No extra tax/delivery fee modelled.
 - One available service and 1–6 whole garments/spots per booking.
 - Pilot arrival target: 30 minutes from immediate confirmation or scheduled start in fictional eligible Dubai/Abu Dhabi zones.
 - Pressing/refresh completion target: 60 minutes from start. Stains require assessment, without a fixed completion deadline.

@@ -406,7 +406,7 @@ Express Pressing, Steam Refresh and Express Stain Treatment are available; Rapid
 
 ### BR02: Pricing
 
-Pressing/refresh: AED 18 per garment, three for 45, six for 90; stain: AED 24 per spot. Add AED 5 per booking. No additional tax or delivery surcharge is modelled.
+Express Pressing AED 10 per garment, Steam Refresh AED 5 per garment, and Express Stain Treatment AED 20 per spot. Add AED 5 per booking. No additional tax or delivery surcharge is modelled.
 
 ### BR03: Quantity and eligibility
 

@@ -58,7 +58,7 @@ export const competitors = [
 export const portersFiveForces = [
   { id: 'new-entrants', name: 'Threat of New Entrants', intensity: 'Medium', rationale: 'Mobile equipment is accessible, but training, trust, and route density take time to establish.', response: 'Build technician standards and dense pilot service zones.' },
   { id: 'suppliers', name: 'Bargaining Power of Suppliers', intensity: 'Low', rationale: 'Several vendors can supply standard equipment; technician availability remains a constraint.', response: 'Qualify alternative suppliers and maintain spare equipment.' },
-  { id: 'buyers', name: 'Bargaining Power of Buyers', intensity: 'Medium', rationale: 'Customers can switch easily and compare price against doing the task themselves.', response: 'Offer clear pricing, reliable arrival estimates, and convenient bundles.' },
+  { id: 'buyers', name: 'Bargaining Power of Buyers', intensity: 'Medium', rationale: 'Customers can switch easily and compare price against doing the task themselves.', response: 'Offer clear pricing, reliable arrival estimates, and convenient on-site care.' },
   { id: 'substitutes', name: 'Threat of Substitutes', intensity: 'High', rationale: 'Home washing, ironing, steamers, and traditional cleaners serve related needs.', response: 'Focus on urgent on-site convenience and transparent treatment limits.' },
   { id: 'rivalry', name: 'Competitive Rivalry', intensity: 'Medium', rationale: 'Laundry platforms and local cleaners compete for the same garment-care budget.', response: 'Differentiate through on-site refresh, service quality, and a focused pilot area.' },
 ];
@@ -72,7 +72,7 @@ export const businessModelCanvas = [
   { id: 'channels', title: 'Channels', items: ['Responsive web application', 'Hotel concierge referrals', 'Office and residential partnerships', 'Social media and word of mouth'] },
   { id: 'customer-segments', title: 'Customer Segments', items: ['Time-constrained professionals', 'Hotel guests and business travellers', 'Residents needing urgent garment refresh', 'Hotels and offices seeking pilot partnerships'] },
   { id: 'cost-structure', title: 'Cost Structure', items: ['Technician compensation', 'Equipment purchase and maintenance', 'Transport and consumables', 'Hosting, payment processing, support, and insurance'] },
-  { id: 'revenue-streams', title: 'Revenue Streams', items: ['Pressing and refresh garment fees', 'Express Stain Treatment spot fees', 'Multi-garment bundles', 'Proposed corporate packages', 'Potential future washing revenue, subject to validation'] },
+  { id: 'revenue-streams', title: 'Revenue Streams', items: ['Pressing and refresh garment fees', 'Express Stain Treatment spot fees', 'Proposed corporate packages', 'Potential future washing revenue, subject to validation'] },
 ];
 
 // Customer FAQs are maintained in ContentPages.jsx.
