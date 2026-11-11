@@ -663,17 +663,23 @@ blockquote cite { display: block; margin-top: 24px; font: 13px/1.6 Arial,sans-se
 .regular-heading { max-width: 640px; margin-bottom: 28px; }
 .regular-heading h2 { font-size: clamp(30px, 3vw, 42px); }
 .regular-heading h2 + p { margin-top: 16px; color: var(--muted); }
-.regular-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.regular-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
 .regular-card { min-width: 0; }
 .regular-card h3 { font-size: 23px; margin-top: 20px; }
 .regular-card .regular-price { font: 28px/1.3 Georgia, serif; margin: 12px 0 8px; }
 .regular-card > a { margin-top: 16px; font-size: 13px; }
 .regular-laundry > .small { color: var(--muted); margin-top: 28px; }
-/* Show the four supplied photos from the original reference without its text. */
-.regular-photo { aspect-ratio: 516 / 412; background-size: 212.6% 310.7%; background-repeat: no-repeat; border-radius: var(--r-md); background-color: var(--surface); }
-.regular-photo--wash-fold { background-position: 4.65% 15.2%; }
-.regular-photo--clean-press { background-position: 95.35% 15.2%; }
-.regular-photo--press-only { background-position: 4.65% 81.2%; }
-.regular-photo--bed-bath { background-position: 95.35% 81.2%; }
+/* Fit each supplied photograph without stretching the screenshot or exposing its labels. */
+.regular-photo { position: relative; width: 100%; aspect-ratio: 516 / 412; overflow: hidden; border-radius: var(--r-md); background: var(--surface); }
+.regular-photo img { position: absolute; display: block; width: 212.597%; max-width: none; height: auto; }
+.regular-photo--wash-fold img { left: -5.233%; top: -32.039%; }
+.regular-photo--clean-press img { left: -107.364%; top: -32.039%; }
+.regular-photo--press-only img { left: -5.233%; top: -171.117%; }
+.regular-photo--bed-bath img { left: -107.364%; top: -171.117%; }
+.service-image { aspect-ratio: 3 / 2; }
+.service-image img { object-position: center; }
+@media (min-width: 640px) and (max-width: 850px) {
+  .hero-visual { min-height: 0; height: auto; aspect-ratio: 3 / 4; }
+}
 @media (max-width: 850px) { .regular-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 639px) { .service-grid, .regular-grid { grid-template-columns: 1fr; } .regular-laundry { margin-top: 48px; } }
