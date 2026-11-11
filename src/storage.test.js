@@ -4,7 +4,7 @@ import { loadState, persistState, STORAGE_KEY } from './storage.js';
 class MemoryStorage { data = new Map(); getItem(key) { return this.data.get(key) ?? null; } setItem(key, value) { this.data.set(key, value); } }
 const storage = new MemoryStorage();
 assert.deepEqual(loadState(storage).state, initialState());
-const next = createOrder(initialState(), { serviceId: 'pressing', garments: [{ type: 'Shirt', quantity: 2 }], customer: { name: 'Demo User', email: 'demo@example.test', phone: '+971500000000' }, location: { area: areas[0], address: 'Fictional Demo Street', building: 'Unit 12', instructions: '' }, slot: 'earliest', paymentMethod: 'card', consent: true }, Date.now(), 'saved-order');
+const next = createOrder(initialState(), { serviceId: 'express-refresh', garments: [{ type: 'One top + one bottom', quantity: 1 }], customer: { name: 'Demo User', email: 'demo@example.test', phone: '+971500000000' }, location: { area: areas[0], address: 'Fictional Demo Street', building: 'Unit 12', instructions: '' }, slot: 'earliest', paymentMethod: 'card', consent: true }, Date.now(), 'saved-order');
 const saved = persistState(storage, next, 0);
 assert.equal(saved.revision, 1);
 const reloaded = loadState(storage);
@@ -24,3 +24,15 @@ for (const invalid of [{}, { ...initialState(), orders: [{ id: 'bad' }] }, { ...
 const unavailable = { getItem() { throw Error('Blocked'); }, setItem() { throw Error('Blocked'); } };
 assert.ok(loadState(unavailable).error); assert.throws(() => persistState(unavailable, next, 0));
 console.log('PASS storage: reload, revisions, corruption, unavailable storage and quota failure preserve honest save outcomes.');
+
+// Existing orders retain their original service IDs and price snapshots after the package update.
+const legacy = structuredClone(saved);
+legacy.customer.preferredService = 'pressing';
+legacy.orders[0].serviceId = 'pressing';
+legacy.orders[0].garments = [{ type: 'Shirt', quantity: 1 }];
+legacy.orders[0].pricing = { quantity: 1, subtotal: 10, serviceFee: 5, total: 15, currency: 'AED' };
+const legacyStorage = new MemoryStorage();
+legacyStorage.setItem(STORAGE_KEY, JSON.stringify(legacy));
+assert.deepEqual(loadState(legacyStorage).state, legacy);
+assert.equal(loadState(legacyStorage).error, '');
+console.log('PASS legacy saved-order compatibility: original prices preserved.');

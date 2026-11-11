@@ -27,7 +27,7 @@ export const screenDesigns = [
     "id": "services",
     "title": "Services",
     "purpose": "Explain suitability, editable demonstration prices and service limits before checkout.",
-    "content": "Three available services, dynamic calculator, future Rapid Wash and fixed fabric assessment.",
+    "content": "Four express packages, additional-garment calculator, four regular laundry services with supplied photos, future Rapid Wash and fixed fabric assessment.",
     "action": "Choose service and quantity, calculate fees or inspect a fabric and stain.",
     "rows": [
       [
@@ -251,12 +251,12 @@ export const businessRules = [
   [
     "BR01",
     "Services",
-    "Express Pressing, Steam Refresh and Express Stain Treatment are available; Rapid Wash is unavailable pending validation."
+    "Express Refresh, two-piece and three-piece Formalwear Rescue, and Stain Rescue are available for on-site demo booking. Regular Laundry is business line 2 with scheduled collection, centralised processing and delivery, via enquiry. Rapid Wash remains a separate future concept."
   ],
   [
     "BR02",
     "Pricing",
-    "Express Pressing AED 10 per garment, Steam Refresh AED 5 per garment, and Express Stain Treatment AED 20 per spot. Add AED 5 per booking. No additional tax or delivery surcharge is modelled."
+    "Express Refresh AED 39 (one top + one bottom); Formalwear Rescue AED 59 (two-piece) or AED 69 (three-piece); Stain Rescue AED 49 (one garment); extra eligible refresh/formalwear garments AED 15 each. Add AED 5 per express booking. Regular: Wash & Fold AED 49 up to 5 kg, Clean & Press from AED 15 per garment, Press Only from AED 8 per garment, Bed & Bath AED 69 up to 10 items. Regular turnaround/collection slots confirmed by enquiry."
   ],
   [
     "BR03",
@@ -281,7 +281,7 @@ export const businessRules = [
   [
     "BR07",
     "Promotional waiver",
-    "Only immediate pressing/refresh orders of up to three eligible garments qualify. Late completion waives the AED 5 service fee; care charges remain. Scheduled, stain and larger bookings are excluded."
+    "Only immediate refresh/formalwear orders of up to three eligible garments qualify. Late completion waives the AED 5 service fee; care charges remain. Scheduled, stain and larger bookings are excluded."
   ],
   [
     "BR08",
@@ -307,7 +307,7 @@ export const layoutAnalysis = [
   ],
   [
     "Block compositing",
-    "Reusable header and footer wrap route-specific modules. Three service columns and form/summary splits stack on phones."
+    "Reusable header and footer wrap route-specific modules. Two express service columns and four smaller regular laundry columns and form/summary splits stack on phones."
   ],
   [
     "Accessibility",

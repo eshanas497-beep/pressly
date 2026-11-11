@@ -654,13 +654,26 @@ blockquote cite { display: block; margin-top: 24px; font: 13px/1.6 Arial,sans-se
   .spec-flow li > span { padding: 16px; }
 }
 
-/* Express leads; regular laundry stays a compact secondary offer. */
+/* Express packages lead; regular laundry is a quieter secondary business line. */
 .express-intro { margin-bottom: 36px; max-width: 700px; }
 .express-intro > p:last-child { margin-top: 16px; color: var(--muted); }
-.regular-laundry { display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-top: 48px; padding: 28px 0; border-top: 1px solid var(--line); }
-.regular-laundry h3 { font-size: 26px; }
-.regular-laundry p { max-width: 620px; }
-.regular-laundry h3 + p { margin-top: 12px; }
-.regular-laundry .small { margin-top: 10px; color: var(--muted); }
-.regular-laundry > a { flex-shrink: 0; }
-@media (max-width: 850px) { .regular-laundry { flex-direction: column; align-items: flex-start; gap: 20px; } }
+.service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.express-extra { margin-top: 28px; padding: 20px; background: var(--mint); color: var(--navy); border-radius: var(--r-md); }
+.regular-laundry { margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--line); }
+.regular-heading { max-width: 640px; margin-bottom: 28px; }
+.regular-heading h2 { font-size: clamp(30px, 3vw, 42px); }
+.regular-heading h2 + p { margin-top: 16px; color: var(--muted); }
+.regular-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.regular-card { min-width: 0; }
+.regular-card h3 { font-size: 23px; margin-top: 20px; }
+.regular-card .regular-price { font: 28px/1.3 Georgia, serif; margin: 12px 0 8px; }
+.regular-card > a { margin-top: 16px; font-size: 13px; }
+.regular-laundry > .small { color: var(--muted); margin-top: 28px; }
+/* Show the four supplied photos from the original reference without its text. */
+.regular-photo { aspect-ratio: 516 / 412; background-size: 212.6% 310.7%; background-repeat: no-repeat; border-radius: var(--r-md); background-color: var(--surface); }
+.regular-photo--wash-fold { background-position: 4.65% 15.2%; }
+.regular-photo--clean-press { background-position: 95.35% 15.2%; }
+.regular-photo--press-only { background-position: 4.65% 81.2%; }
+.regular-photo--bed-bath { background-position: 95.35% 81.2%; }
+@media (max-width: 850px) { .regular-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .service-grid, .regular-grid { grid-template-columns: 1fr; } .regular-laundry { margin-top: 48px; } }

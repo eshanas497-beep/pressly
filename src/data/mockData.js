@@ -43,7 +43,7 @@ export const fabricStainMatrix = {
 };
 
 export const scannerOutcomes = {
-  assess: { label: 'Technician assessment', serviceId: 'stain', message: 'Confirm the care label, stain history, and spot-test result before proceeding.' },
+  assess: { label: 'Technician assessment', serviceId: 'stain-rescue', message: 'Confirm the care label, stain history, and spot-test result before proceeding.' },
   specialist: { label: 'Specialist care required', serviceId: null, message: 'Refer this combination for specialist inspection before treatment.' },
   unknown: { label: 'Unable to identify', serviceId: null, message: 'Request manual inspection; do not infer suitability from an unclear photo.' },
 };
@@ -72,7 +72,7 @@ export const businessModelCanvas = [
   { id: 'channels', title: 'Channels', items: ['Responsive web application', 'Hotel concierge referrals', 'Office and residential partnerships', 'Social media and word of mouth'] },
   { id: 'customer-segments', title: 'Customer Segments', items: ['Time-constrained professionals', 'Hotel guests and business travellers', 'Residents needing urgent garment refresh', 'Hotels and offices seeking pilot partnerships'] },
   { id: 'cost-structure', title: 'Cost Structure', items: ['Technician compensation', 'Equipment purchase and maintenance', 'Transport and consumables', 'Hosting, payment processing, support, and insurance'] },
-  { id: 'revenue-streams', title: 'Revenue Streams', items: ['Pressing and refresh garment fees', 'Express Stain Treatment spot fees', 'Proposed corporate packages', 'Potential future washing revenue, subject to validation'] },
+  { id: 'revenue-streams', title: 'Revenue Streams', items: ['Express Refresh and Formalwear Rescue packages', 'Stain Rescue and additional-garment fees', 'Regular laundry: Wash & Fold, Clean & Press, Press Only, Bed & Bath', 'Proposed corporate packages'] },
 ];
 
 // Customer FAQs are maintained in ContentPages.jsx.

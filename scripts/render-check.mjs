@@ -25,9 +25,9 @@ try {
     if (screen.id === 'services') assert.ok(html.includes('Booking unavailable'));
     console.log(`PASS route render: ${screen.id}`);
   }
-  const state = createOrder(initialState(), { serviceId: 'pressing', garments: [{ type: 'Shirt', quantity: 1 }], customer: { name: 'Demo User', email: 'demo@example.test', phone: '+971500000000' }, location: { area: areas[0], address: 'Fictional Office Street', building: 'Demo 12' }, slot: 'earliest', paymentMethod: 'card', consent: true }, Date.now(), 'render-order');
+  const state = createOrder(initialState(), { serviceId: 'express-refresh', garments: [{ type: 'One top + one bottom', quantity: 1 }], customer: { name: 'Demo User', email: 'demo@example.test', phone: '+971500000000' }, location: { area: areas[0], address: 'Fictional Office Street', building: 'Demo 12' }, slot: 'earliest', paymentMethod: 'card', consent: true }, Date.now(), 'render-order');
   memory.set(STORAGE_KEY, JSON.stringify(state));
-  for (const route of ['tracking', 'dashboard', 'technician']) { window.location.hash = `#${route}`; const html = renderToStaticMarkup(createElement(App)); assert.ok(html.includes(route === 'dashboard' ? 'Order history.' : route === 'technician' ? 'Accept demo job' : 'Service event history.')); assert.ok(html.includes('Express Pressing')); }
+  for (const route of ['tracking', 'dashboard', 'technician']) { window.location.hash = `#${route}`; const html = renderToStaticMarkup(createElement(App)); assert.ok(html.includes(route === 'dashboard' ? 'Order history.' : route === 'technician' ? 'Accept demo job' : 'Service event history.')); assert.ok(html.includes('Express Refresh')); }
   window.location.hash = '#unknown'; assert.ok(renderToStaticMarkup(createElement(App)).includes('Express laundry.'));
   memory.set(STORAGE_KEY, '{broken'); window.location.hash = '#dashboard'; assert.ok(renderToStaticMarkup(createElement(App)).includes('Saved demo data could not be read'));
   console.log('PASS populated dashboards, tracking, unknown route fallback and corrupt-storage notice.');

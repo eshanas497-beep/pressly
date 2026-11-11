@@ -44,13 +44,15 @@ Home, Services, Book Express Care, Tracking, My account, Technician demo, About 
 
 ## Prices and timing
 
-- Express Pressing: AED 10 per garment.
-- Steam Refresh: AED 5 per garment.
-- Express Stain Treatment: AED 20 per eligible spot, subject to assessment.
+- Express Refresh: AED 39 for one top + one bottom.
+- Formalwear Rescue: AED 59 for jacket + trousers; AED 69 for jacket + waistcoat + trousers.
+- Stain Rescue: AED 49 for one garment; removal depends on fabric/stain suitability and is not guaranteed.
+- Additional eligible refresh/formalwear garment during the same visit: AED 15, up to six garments total. One package or one stain-treatment garment per demo visit.
+- Regular laundry: Wash & Fold AED 49 up to 5 kg; Clean & Press from AED 15 per garment; Press Only from AED 8 per garment; Bed & Bath AED 69 up to 10 items. Scheduled collection, centralised processing and delivery; enquiry-only until collection slots/turnaround are defined.
 - Add AED 5 demonstration service fee per booking. No other tax or surcharge is modelled.
 - Arrival target: 30 minutes after immediate confirmation or selected scheduled start in fictional pilot zones.
 - Pressing/refresh target completion: 60 minutes from start, with suitability/workload limits.
-- Only immediate pressing/refresh orders of up to three garments qualify for the proposed late-completion AED 5 service-fee waiver. Care charges remain. Full draft conditions are on Policies.
+- Only immediate refresh/formalwear orders of up to three garments qualify for the proposed late-completion AED 5 service-fee waiver. Care charges remain. Full draft conditions are on Policies.
 - Rapid Wash is a future, unvalidated concept and cannot be booked.
 
 These are classroom prices and proposed commitments, not verified market rates or operating performance.
@@ -81,3 +83,5 @@ Repository: https://github.com/eshanas497-beep/pressly
 The existing workflow checks and builds on pushes to `main`, then deploys `dist/` through GitHub Pages. Settings → Pages must use GitHub Actions as its source. `base: './'` supports the `/pressly/` project path. A successful local build does not confirm deployment: inspect the Actions result and actual published site after pushing.
 
 Local review profiles, dependencies, build output, development instructions, hosting metadata and secrets are excluded from source control. No repository history is rewritten.
+
+Current services follow the two user-supplied WhatsApp references dated 2026-11-10. Regular-service photos use the supplied reference image; generated editorial imagery remains used for express care. Legacy service definitions are retained only to read saved orders; their original price snapshots are preserved and rebooking uses current packages.
