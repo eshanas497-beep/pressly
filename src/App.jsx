@@ -9,7 +9,7 @@ import { loadState, persistState, STORAGE_KEY } from './storage.js';
 
 const pages = [
   ['home', 'Home', '', ''],
-  ['services', 'Services', 'Care that comes to you.', 'Pressing, steam refreshing and eligible stain assessment. Prices are illustrative AED amounts for this prototype.'],
+  ['services', 'Services', 'Express laundry. At your door.', 'Our signature express care leads the way. Regular laundry covers everyday needs. Express prices are illustrative AED amounts for this prototype.'],
   ['booking', 'Book Express Care', 'Your care. Your doorstep.', 'Six steps to a saved demo booking. No real payment, dispatch or service commitment.'],
   ['tracking', 'Tracking', 'Your order, step by step.', 'A transparent demonstration of service progress, timestamps and care details.'],
   ['dashboard', 'My account', 'Your wardrobe, remembered.', 'Saved demo bookings, service preferences, profile and feedback in this browser.'],

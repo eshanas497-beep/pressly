@@ -653,3 +653,14 @@ blockquote cite { display: block; margin-top: 24px; font: 13px/1.6 Arial,sans-se
   .wire-row > div { padding: 16px 8px; font-size: 11px; }
   .spec-flow li > span { padding: 16px; }
 }
+
+/* Express leads; regular laundry stays a compact secondary offer. */
+.express-intro { margin-bottom: 36px; max-width: 700px; }
+.express-intro > p:last-child { margin-top: 16px; color: var(--muted); }
+.regular-laundry { display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-top: 48px; padding: 28px 0; border-top: 1px solid var(--line); }
+.regular-laundry h3 { font-size: 26px; }
+.regular-laundry p { max-width: 620px; }
+.regular-laundry h3 + p { margin-top: 12px; }
+.regular-laundry .small { margin-top: 10px; color: var(--muted); }
+.regular-laundry > a { flex-shrink: 0; }
+@media (max-width: 850px) { .regular-laundry { flex-direction: column; align-items: flex-start; gap: 20px; } }
